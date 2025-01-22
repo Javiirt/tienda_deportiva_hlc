@@ -1,0 +1,7 @@
+{
+  "name": "tienda-deportiva",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
