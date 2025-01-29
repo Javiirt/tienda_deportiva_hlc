@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Tienda Deportiva
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label>Producto: </ion-label>
+    <ion-input [(ngModel)]="productoEditando.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: </ion-label>
+    <ion-input [(ngModel)]="productoEditando.precio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoria: </ion-label>
+    <ion-input [(ngModel)]="productoEditando.categoria"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Stock: </ion-label>
+    <ion-input [(ngModel)]="productoEditando.stock"></ion-input>
+  </ion-item>
+  <ion-button (click)="clicBotonInsertar()">
+    Guardar producto
+  </ion-button>
 </ion-content>
