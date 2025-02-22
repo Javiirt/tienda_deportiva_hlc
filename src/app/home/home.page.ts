@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Producto } from '../producto';
 import { FirestoreService } from '../firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,29 +11,34 @@ import { FirestoreService } from '../firestore.service';
 })
 export class HomePage {
 
-  productoEditando: Producto ;
+  productoEditando: Producto;
+  arrayColeccionProductos: any = [{
+    id: "",
+    data: {} as Producto
+  }];
 
-  constructor(private firestoreService: FirestoreService) {
-    //Crear un producto vacío al empezar
-    this.productoEditando ={} as Producto;
-
+  constructor(private firestoreService: FirestoreService, private router: Router) {
+    this.productoEditando = {} as Producto;
+    this.obtenerListaProductos();
   }
 
-  clicBotonInsertar() {
-    if (this.productoEditando && Object.keys(this.productoEditando).length > 0) {
-      this.firestoreService.insertar('productos', this.productoEditando).then(
-        () => {
-          console.log('Producto insertado correctamente');
-          this.productoEditando = {} as Producto;
-        },
-        (error) => {
-          console.error('Error al insertar producto', error);
-        }
-      );
-    } else {
-      console.error('Producto inválido: No se pueden insertar datos vacíos.');
-    }
+  obtenerListaProductos() {
+    this.firestoreService.consultar('productos').subscribe((resultadoConsultaProductos: any) => {
+      this.arrayColeccionProductos = [];
+      resultadoConsultaProductos.forEach((datosProducto: any) => {
+        this.arrayColeccionProductos.push({
+          id: datosProducto.payload.doc.id,
+          data: datosProducto.payload.doc.data()
+        });
+      });
+    });
   }
-  
 
+  selectProducto(id: string): void {
+    this.router.navigate(['/detalle', id]);
+  }
+
+  crearProducto(): void {
+    this.router.navigate(['/detalle']);
+  }
 }

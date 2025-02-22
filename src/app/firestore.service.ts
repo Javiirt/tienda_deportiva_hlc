@@ -10,4 +10,20 @@ export class FirestoreService {
   public insertar(coleccion: string, datos: any) {
     return this.angularFirestore.collection(coleccion).add(datos);
   }
+
+  public consultar(coleccion: string) {
+    return this.angularFirestore.collection(coleccion).snapshotChanges();
+  }
+
+  public consultarporId(coleccion: string, documentId: string) {
+    return this.angularFirestore.collection(coleccion).doc(documentId).snapshotChanges();
+  }
+
+  public actualizar(coleccion: string, documentId: string, datos: any) {
+    return this.angularFirestore.collection(coleccion).doc(documentId).update(datos);
+  }
+
+  public borrar(coleccion: string, documentId: string) {
+    return this.angularFirestore.collection(coleccion).doc(documentId).delete();
+  }
 }

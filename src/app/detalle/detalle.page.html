@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ isEditMode ? 'Modificar Producto' : 'Crear Producto' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Producto: </ion-label>
+    <ion-input [(ngModel)]="producto.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: </ion-label>
+    <ion-input [(ngModel)]="producto.precio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoria: </ion-label>
+    <ion-input [(ngModel)]="producto.categoria"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Stock: </ion-label>
+    <ion-input [(ngModel)]="producto.stock"></ion-input>
+  </ion-item>
+  <ion-button (click)="guardarProducto()">
+    {{ isEditMode ? 'Guardar' : 'Crear' }}
+  </ion-button>
+  <ion-button (click)="volver()">
+    Volver
+  </ion-button>
+  <ion-button *ngIf="isEditMode" color="danger" (click)="confirmarBorrado()">
+    Borrar
+  </ion-button>
+</ion-content>

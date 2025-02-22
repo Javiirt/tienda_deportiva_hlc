@@ -7,23 +7,31 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-label>Producto: </ion-label>
-    <ion-input [(ngModel)]="productoEditando.nombre"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Precio: </ion-label>
-    <ion-input [(ngModel)]="productoEditando.precio"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Categoria: </ion-label>
-    <ion-input [(ngModel)]="productoEditando.categoria"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Stock: </ion-label>
-    <ion-input [(ngModel)]="productoEditando.stock"></ion-input>
-  </ion-item>
-  <ion-button (click)="clicBotonInsertar()">
-    Guardar producto
-  </ion-button>
+  <h1>Lista de productos:</h1>
+  <ion-list>
+    <ion-item *ngFor="let documentProducto of arrayColeccionProductos" (click)="selectProducto(documentProducto.id)">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h2>Producto: {{documentProducto.data.nombre}}</h2>
+          </ion-col>
+          <ion-col>
+            <p>Precio: {{documentProducto.data.precio}}</p>
+          </ion-col>
+          <ion-col>
+            <p>Categoria: {{documentProducto.data.categoria}}</p>
+          </ion-col>
+          <ion-col>
+            <p>Stock: {{documentProducto.data.stock}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="crearProducto()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
