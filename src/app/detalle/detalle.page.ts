@@ -28,7 +28,7 @@ export class DetallePage implements OnInit {
     if (idRecibido) {
       this.id = idRecibido;
       this.isEditMode = true;
-      this.firestoreService.consultarporId('productos', this.id).subscribe((resultado: any) => {
+      this.firestoreService.consultarporId('productos-javier', this.id).subscribe((resultado: any) => {
         if (resultado.payload.data() != null) {
           this.producto = resultado.payload.data();
         } else {
@@ -43,11 +43,11 @@ export class DetallePage implements OnInit {
 
   guardarProducto() {
     if (this.isEditMode) {
-      this.firestoreService.actualizar('productos', this.id, this.producto).then(() => {
+      this.firestoreService.actualizar('productos-javier', this.id, this.producto).then(() => {
         this.router.navigate(['/home']);
       });
     } else {
-      this.firestoreService.insertar('productos', this.producto).then(() => {
+      this.firestoreService.insertar('productos-javier', this.producto).then(() => {
         this.router.navigate(['/home']);
       });
     }
@@ -79,7 +79,7 @@ export class DetallePage implements OnInit {
   }
 
   borrarProducto() {
-    this.firestoreService.borrar('productos', this.id).then(() => {
+    this.firestoreService.borrar('productos-javier', this.id).then(() => {
       this.router.navigate(['/home']);
     });
   }

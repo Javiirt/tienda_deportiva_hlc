@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   obtenerListaProductos() {
-    this.firestoreService.consultar('productos').subscribe((resultadoConsultaProductos: any) => {
+    this.firestoreService.consultar('productos-javier').subscribe((resultadoConsultaProductos: any) => {
       this.arrayColeccionProductos = [];
       resultadoConsultaProductos.forEach((datosProducto: any) => {
         this.arrayColeccionProductos.push({
