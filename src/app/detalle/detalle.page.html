@@ -21,6 +21,13 @@
     <ion-label>Stock: </ion-label>
     <ion-input [(ngModel)]="producto.stock"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label>Imagen: </ion-label>
+    <ion-button (click)="seleccionarImagen()">Seleccionar Imagen</ion-button>
+  </ion-item>
+  <ion-item *ngIf="producto.imagenURL">
+    <ion-img [src]="producto.imagenURL"></ion-img>
+  </ion-item>
   <ion-button (click)="guardarProducto()">
     {{ isEditMode ? 'Guardar' : 'Crear' }}
   </ion-button>

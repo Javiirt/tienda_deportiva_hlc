@@ -24,6 +24,9 @@
           <ion-col>
             <p>Stock: {{documentProducto.data.stock}}</p>
           </ion-col>
+          <ion-col *ngIf="documentProducto.data.imagenURL">
+            <ion-img [src]="documentProducto.data.imagenURL"></ion-img>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>

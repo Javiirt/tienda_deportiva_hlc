@@ -9,6 +9,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,9 +20,9 @@ import { environment } from '../environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Inicialización de Firebase
-    AngularFirestoreModule // Módulo de Firestore
+    AngularFirestoreModule, AngularFireStorageModule // Módulo de Firestore
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ImagePicker ,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
